@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html>
+<head>
+    <title></title>
+
+    <meta charset="utf-8">
+
+    <script type="text/javascript" src="../src/tracking.js"></script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    var canvas = new tracking.Canvas().render();
+
+    canvas.loadImage('img/dulcedeletche.jpg', function() {
+        var imageData = canvas.getImageData();
+
+        canvas.forEach(imageData, function(r, g, b, a, w, i, j) {
+            canvas.context.fillStyle = "rgb(255,0,255)";
+            canvas.context.fillRect(j, i, 5, 5);
+        }, 16);
+
+        canvas.forEach(imageData, function(r, g, b, a, w, i, j) {
+            canvas.context.fillStyle = "rgb(0,255,255)";
+            canvas.context.fillRect(j, i, 10, 10);
+        }, 32);
+    });
+</script>
+
+</body>
+</html>
